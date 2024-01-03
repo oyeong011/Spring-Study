@@ -17,4 +17,13 @@ public class WebConfig {
 
         return filterRegistrationBean;
     }
+    @Bean
+    public FilterRegistrationBean loginCheckFilter(){
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean<>();
+        filterRegistrationBean.setFilter(new LogFilter()); //로그 필터 등록
+        filterRegistrationBean.setOrder(2); // 필터 순서
+        filterRegistrationBean.addUrlPatterns("/*"); // 모든 요청에 필터 적용
+
+        return filterRegistrationBean;
+    }
 }
